@@ -1,0 +1,27 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout title={`Tianhe Yang – ${frontmatter.title}`}>
+  <div class="column sm:col-span-6 project-summary">
+    <div class="section lightbox-gallery">
+      <a href={frontmatter.primaryImage.url} class="lightbox" data-caption={frontmatter.primaryImage.caption}><img src={frontmatter.primaryImage.url} alt={frontmatter.primaryImage.alt} /></a>
+      <a href={frontmatter.secondaryImage.url} class="lightbox" data-caption={frontmatter.secondaryImage.caption}><img src={frontmatter.secondaryImage.url} alt={frontmatter.secondaryImage.alt} /></a>
+      <a href={frontmatter.tertiaryImage.url} class="lightbox" data-caption={frontmatter.tertiaryImage.caption}><img src={frontmatter.tertiaryImage.url} alt={frontmatter.tertiaryImage.alt}/></a>
+      <div class="float-fix"></div>
+    </div>
+    <div class="section">
+      <header>
+        <h1>{frontmatter.title}</h1>
+      </header>
+      <slot />
+    </div>
+  </div>
+  <div class="column sm:col-span-3 project-summary-margins">
+    <h2 class="sm:pt-px">Role</h2>
+    <dl>
+      <dd>{frontmatter.description}</dd>
+    </dl>
+  </div>
+</BaseLayout>
