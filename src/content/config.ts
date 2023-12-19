@@ -1,6 +1,5 @@
-// Import utilities from `astro:content`
 import { z, defineCollection } from "astro:content";
-// Define a `type` and `schema` for each collection
+// Projects collection schema
 const projectsCollection = defineCollection({
   type: "content",
   schema: z.object({
@@ -25,7 +24,7 @@ const projectsCollection = defineCollection({
     }),
   }),
 });
-// Export a single `collections` object to register your collection(s)
+// Register projects collection
 export const collections = {
   projects: projectsCollection,
 };
