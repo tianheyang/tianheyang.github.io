@@ -29,13 +29,13 @@ $alert-yellow: #ffb200;
 	}
 }
 @mixin default-font {
-	font-family: DejaVuSans, Helvetica, Arial, sans-serif;
+	font-family: DejaVuSans, Helvetica, Arial, Roboto, "SF Pro", NotoSansSymbols2, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";;
 	font-weight: 400;
 	color: black;
 	font-style: normal;
 }
 @mixin header-font {
-	font-family: DIN, "Helvetica Condensed", Impact, sans-serif;
+	font-family: DIN, "Helvetica Condensed", Impact, "Arial Narrow", "Roboto Condensed", "SF Compact", NotoSansSymbols2, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";;
 	font-weight: 700;
 	color: black;
 	font-style: normal;
@@ -49,7 +49,7 @@ $alert-yellow: #ffb200;
 @mixin banner-font {
 	text-transform: uppercase;
 	line-height: 100%;
-	font-family: DejaVuSansCondensed, "Helvetical Condensed", Arial, sans-serif;
+	font-family: DejaVuSansCondensed, "Helvetical Condensed", "Arial Narrow", "Roboto Condensed", "SF Compact", NotoSansSymbols2, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";;
 	margin-bottom: 10px;
 }
 

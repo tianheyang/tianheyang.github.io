@@ -11,7 +11,16 @@ export default {
         "alert-yellow": "#ffb200",
       },
       fontFamily: {
-        title: ["DIN", "Helvetica Condensed", "Arial", "sans-serif"],
+        title: [
+          "DIN",
+          "Helvetica Condensed",
+          "Impact",
+          "Arial Narrow",
+          "Roboto Condensed",
+          "SF Compact",
+          "NotoSansSymbols2",
+          "sans-serif",
+        ],
       },
     },
   },
