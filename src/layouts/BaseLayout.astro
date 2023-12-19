@@ -1,0 +1,33 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import BaseFooter from "../components/BaseFooter.astro";
+import BaseHeader from "../components/BaseHeader.astro";
+import BaseNav from "../components/BaseNav.astro";
+import Scripts from "../layouts/Scripts.astro";
+import '../styles/global.scss';
+const { title } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <BaseHead title={title} />
+  </head>
+  <body>
+    <div id="loader" transition:persist></div>
+    <BaseHeader isHome={Astro.url.pathname === '/'}/>
+    <main class={Astro.url.pathname === '/' ? 'homepage' : ''}>
+      <div class="row mx-auto px-4 sm:max-w-screen-xl sm:px-8">
+        <div class="relative grid grid-cols-1 sm:gap-8 sm:grid-cols-12">
+          <div class="column sm:col-span-3">
+            <BaseNav />
+          </div>
+          <slot />
+        </div>
+      </div>
+    </main>
+    <BaseFooter />
+  </body>
+  <Scripts />
+</html>

@@ -1,0 +1,222 @@
+---
+---
+<script
+  is:inline
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"
+></script>
+<script
+  is:inline
+  src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"
+  integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY="
+  crossorigin="anonymous"
+></script>
+<script src="../scripts/jquery.lightbox-0.5.js"></script>
+<script src="../scripts/parallax.js"></script>
+
+<!--
+  Terminal 2 Digicraft Frontened Javascript
+  Script for the Homepage of Tianhe Yang
+  tianheyang.com
+  v0.1 Test Version
+
+  Copyright Tianhe Yang
+  May 17, 2012
+-->
+
+<script>
+  $(document).ready(function () {
+    // Common Variables
+    var $window = $(window);
+    var $body = $("body,html");
+    var $banner = $("#banner");
+    // Remove spam farmer protection on email click
+    $('a.email-link').on('click', function(){
+      var href = $(this).attr('href') || '';
+      $(this).attr('href', href.replace('nospam.', ''));
+    });
+    // .toggle() replacement for jQuery 1.9+, by jakecigar of jQuery forums
+    $.fn.toggleClick = function () {
+      var functions = arguments,
+        iteration = 0;
+      return this.click(function () {
+        functions[iteration].apply(this, arguments);
+        iteration = (iteration + 1) % functions.length;
+      });
+    };
+    // Smooth Scrolling
+    function filterPath(string) {
+      return string
+        .replace(/^\//, "")
+        .replace(/(index|default).[a-zA-Z]{3,4}$/, "")
+        .replace(/\/$/, "");
+    }
+    function activateAnchor(target, cb, fromTop) {
+      var $currentActiveSection = $(".section.active");
+      var $currentActiveNav = $("#nav .active");
+      var $link = $(`.homepage #nav ul a[href="${target}"]`);
+      var $target = $(target);
+      var $sidebarSection = $(".sidebar ." + target.substring(1));
+      if (target == "#photo") {
+        $body.animate(
+          {
+            scrollTop: 0,
+          },
+          300,
+          "easeInOutQuint"
+        );
+      } else if (fromTop != undefined) {
+        $body.scrollTop(fromTop);
+      }
+      $currentActiveSection.fadeOut(300, function () {
+        $currentActiveSection.removeClass("active");
+        $currentActiveNav.removeClass("active");
+        $banner.attr("data-activesection", target.substring(1));
+        $target.fadeIn(300, function () {
+          $target.addClass("active");
+          $link.addClass("active");
+          if (cb) {
+            setTimeout(cb, 310);
+          }
+        });
+        if ($sidebarSection.length) {
+          $sidebarSection.fadeIn(300, function () {
+            $sidebarSection.addClass("active");
+          });
+        }
+      });
+    }
+    function smoothScroll(target) {
+      if (target != "#photo") {
+        $body.animate(
+          {
+            scrollTop: $(target).offset().top - 19,
+          },
+          300,
+          "easeInOutQuint"
+        );
+      }
+    }
+    // Scroll override
+    $body.bind(
+      "scroll mousedown DOMMouseScroll mousewheel keyup touchmove",
+      function (e) {
+        if (
+          e.which > 0 ||
+          e.type == "mousedown" ||
+          e.type == "mousewheel" ||
+          e.type == "touchmove"
+        ) {
+          $body.stop();
+        }
+      }
+    );
+    function initAnchors() {
+      var $locationPath = filterPath(location.pathname);
+
+      $(".homepage a[href*='#']").each(function() {
+        const $thisPath = filterPath(this.pathname) || $locationPath;
+        const routeName = this.hash.replace(/#/,'');
+
+        if ($locationPath == $thisPath
+        && (location.hostname == this.hostname || !this.hostname)
+        && routeName ) {
+          var target = this.hash;
+          $(this).click(function(event) {
+            event.preventDefault();
+            var $fromTop = $body.scrollTop();
+            activateAnchor(target, function(){smoothScroll(target)}, $fromTop);
+          });
+        }
+      });
+    }
+    // reset bindings for responsive layout
+    function resetAnchors() {
+      $("a[href*='#']").each(function() {
+        $(this).unbind();
+      });
+    }
+    // jQuery Lightbox
+    function initLightbox() {
+      if ($(".lightbox-gallery").length) {
+        $(".lightbox-gallery").each(function () {
+          $(this).find("a").lightBox();
+        });
+      }
+    }
+    $(window).on('load', function(){
+      initAnchors();
+    });
+    $(window).on('resize', function () {
+      resetAnchors();
+      initAnchors();
+      initLightbox();
+    });
+    $(window).bind("orientationchange", function (e) {
+      resetAnchors();
+      initAnchors();
+      initLightbox();
+    });
+    // Open collapsed items with expander
+    function initExpanders() {
+      $(".expander").click(function () {
+        $(this).next(".collapsed").slideToggle(1000, "easeOutExpo");
+      });
+      $("#profile-summary .expander").toggleClick(
+        function () {
+          $(this).html("Hide Details");
+        },
+        function () {
+          $(this).html("Show Details");
+        }
+      );
+    }
+    // Flipboard
+    function toggleFlipboard(board) {
+      if (board.hasClass("hovered")) {
+        board.removeClass("hovered");
+      } else {
+        board.addClass("hovered");
+      }
+    }
+    if ($("#banner-text").length) {
+      var $flipBoardInterval = setInterval(function () {
+        toggleFlipboard($("#banner-text"));
+      }, 3000);
+      $("#banner-text").mouseenter(function () {
+        window.clearInterval($flipBoardInterval);
+      });
+      $("#banner-text").mouseleave(function () {
+        $(this).removeClass("hovered");
+      });
+    }
+    // Showcase Hover Effect
+    /*if ($('.showcase').length) {
+		$('.showcase .preview').each(function() {
+			$(this).append('<div class="link-overlay"></div>');
+		});
+	}*/
+    // Basic functionality
+    function initBasic() {
+      initLightbox();
+      initExpanders();
+    }
+    initBasic();
+    // Window loading
+    document.addEventListener('astro:page-load', () => {
+      // This only runs once.
+      $("#loader").fadeOut(400);
+    }, { once: true });
+    document.addEventListener('astro:page-load', () => {
+      resetAnchors();
+      initAnchors();
+      initLightbox();
+      if (window.location.pathname === '/') {
+        $banner.removeClass('compact-banner');
+      } else {
+        $banner.addClass('compact-banner');
+      }
+    });
+  });
+</script>

@@ -1,0 +1,158 @@
+/**
+ * jQuery lightBox plugin
+ * This jQuery plugin was inspired and based on Lightbox 2 by Lokesh Dhakar (http://www.huddletogether.com/projects/lightbox2/)
+ * and adapted to me for use like a plugin from jQuery.
+ * @name jquery-lightbox-0.5.css
+ * @author Leandro Vieira Pinho - http://leandrovieira.com
+ * @author Tianhe Yang, modified for tianheyang.com
+ * @version 0.5
+ * @date April 11, 2008
+ * @category jQuery plugin
+ * @copyright (c) 2008 Leandro Vieira Pinho (leandrovieira.com)
+ * @license CCAttribution-ShareAlike 2.5 Brazil - http://creativecommons.org/licenses/by-sa/2.5/br/deed.en_US
+ * @example Visit http://leandrovieira.com/projects/jquery/lightbox/ for more informations about this jQuery plugin
+ */
+#jquery-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	width: 100%;
+	height: 100%;
+}
+#jquery-lightbox {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 150;
+	text-align: center;
+	line-height: 0;
+}
+#jquery-lightbox a img { border: none; }
+#lightbox-container-image-box {
+	@extend .centered;
+	background-color: #fff;
+	width: 100%;
+	height: 100%;
+}
+#lightbox-container-image {
+	padding: 0px;
+	height: 100%;
+}
+#lightbox-container-image img {
+	@extend .centered;
+	max-width: 100%;
+	max-height: 100%;
+  	border: 1px solid #d7d7d7;
+}
+#lightbox-loading {
+	box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+   -ms-box-sizing: border-box;
+	position: absolute;
+	display: block;
+	top: 0;
+	left: 0;
+	padding: 80px;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	line-height: 0;
+	background: white;
+}
+#lightbox-nav {
+	height: 100%;
+	width: 100%;
+	z-index: 10;
+	position: relative;
+}
+#lightbox-container-image-box > #lightbox-nav { left: 0; }
+#lightbox-nav a { outline: none;}
+#lightbox-nav-btnPrev, #lightbox-nav-btnNext {
+	width: 49%;
+	height: 100%;
+	zoom: 1;
+	display: block;
+	-webkit-transition-property: none;
+	-moz-transition-property: none;
+	-o-transition-property: none;
+	transition-property: none;
+}
+#lightbox-nav-btnPrev { 
+	left: 0; 
+	float: left;
+}
+#lightbox-nav-btnNext { 
+	right: 0; 
+	float: right;
+}
+#lightbox-container-image-data #lightbox-image-details { 
+	box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+   -ms-box-sizing: border-box;
+	width: 24.25%;
+	background: transparent url('/images/transparent-background.png') repeat;
+	color: white;
+	padding: 17px 20px;
+	text-align: left; 
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	z-index: 100;
+}	
+#lightbox-container-image-data #lightbox-image-details span {
+	width: 100%;
+} 
+#lightbox-container-image-data a {
+	color: white;
+}
+#lightbox-image-details-caption { 
+	display: block;
+	float: left;
+	line-height: 130%;
+	margin-bottom: 0.8em;
+}
+#lightbox-image-details-currentNumber {
+	display: block;
+	float: left;
+	line-height: 100%;
+	font-style: italic;
+	font-size: 0.8em;
+	text-transform: uppercase;
+}		
+#lightbox-secNav {
+	width: 60px;
+	height: 60px;
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 100;
+}	
+#lightbox-secNav-btnClose {
+	display: block;
+	float: left;
+	width: 60px; 
+	height: 60px;
+	background: transparent url('/images/lightbox-btn-close.png') center center no-repeat;
+	line-height: 0;
+	font-size: 0;
+}
+
+@media handheld, only screen and (max-width: 767px) {
+	#lightbox-container-image-data #lightbox-image-details {
+		display: none !important;
+	}
+}
+
+@media 
+(-webkit-min-device-pixel-ratio: 1.5), 
+(min-resolution: 144dpi){
+	#lightbox-secNav-btnClose {
+		background-image: url('/images/lightbox-btn-close@2x.png');
+		background-size: 20px 20px;
+	}
+}

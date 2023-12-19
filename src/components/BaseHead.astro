@@ -1,0 +1,22 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Tianhe Yang – Designer/Developer",
+  description = "Creating delightful digital experiences for agile teams since 2010.",
+} = Astro.props;
+---
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="generator" content={Astro.generator} />
+  <meta name="description" content={description} />
+  <title>{title}</title>
+  <ViewTransitions />
+</head>
