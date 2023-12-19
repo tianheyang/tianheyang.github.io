@@ -204,10 +204,10 @@
     }
     initBasic();
     // Window loading
-    document.addEventListener('astro:page-load', () => {
-      // This only runs once.
-      $("#loader").fadeOut(400);
-    }, { once: true });
+    // document.addEventListener('astro:page-load', () => {
+    //   // This only runs once.
+    //   $("#loader").fadeOut(400);
+    // }, { once: true });
     document.addEventListener('astro:page-load', () => {
       resetAnchors();
       initAnchors();

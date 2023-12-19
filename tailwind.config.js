@@ -10,6 +10,9 @@ export default {
         "superlight-gray": "#f7f7f7",
         "alert-yellow": "#ffb200",
       },
+      fontFamily: {
+        title: ["DIN", "Helvetica Condensed", "Arial", "sans-serif"],
+      },
     },
   },
   plugins: [],

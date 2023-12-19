@@ -15,7 +15,6 @@ const { title } = Astro.props;
     <BaseHead title={title} />
   </head>
   <body>
-    <div id="loader" transition:persist></div>
     <BaseHeader isHome={Astro.url.pathname === '/'}/>
     <main class={Astro.url.pathname === '/' ? 'homepage' : ''}>
       <div class="row mx-auto px-4 sm:max-w-screen-xl sm:px-8">
