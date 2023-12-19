@@ -11,7 +11,7 @@ const { frontmatter } = Astro.props;
       <a href={frontmatter.tertiaryImage.url} class="lightbox" data-caption={frontmatter.tertiaryImage.caption}><img src={frontmatter.tertiaryImage.url} alt={frontmatter.tertiaryImage.alt}/></a>
       <div class="float-fix"></div>
     </div>
-    <div class="section">
+    <div class="section mb-8">
       <header>
         <h1>{frontmatter.title}</h1>
       </header>
@@ -19,9 +19,9 @@ const { frontmatter } = Astro.props;
     </div>
   </div>
   <div class="column sm:col-span-3 project-summary-margins">
-    <h2 class="sm:pt-px">Role</h2>
+    <h2 class="sm:pt-px">Roles</h2>
     <dl>
-      <dd>{frontmatter.description}</dd>
+      {frontmatter.roles.map(r => <dd>{r}</dd>)}
     </dl>
   </div>
 </BaseLayout>

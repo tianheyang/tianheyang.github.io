@@ -175,9 +175,79 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"projects": {
+"designelement.md": {
+	id: "designelement.md";
+  slug: "designelement";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] };
+"edgecast-open-source.md": {
+	id: "edgecast-open-source.md";
+  slug: "edgecast-open-source";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] };
+"fengling-elroy.md": {
+	id: "fengling-elroy.md";
+  slug: "fengling-elroy";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] };
+"groundswell.md": {
+	id: "groundswell.md";
+  slug: "groundswell";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] };
+"nationbuilder.md": {
+	id: "nationbuilder.md";
+  slug: "nationbuilder";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] };
+"polly.md": {
+	id: "polly.md";
+  slug: "polly";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] };
+"shutterdial.md": {
+	id: "shutterdial.md";
+  slug: "shutterdial";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] };
+"soapy.md": {
+	id: "soapy.md";
+  slug: "soapy";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] };
 "terminal2.md": {
 	id: "terminal2.md";
   slug: "terminal2";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] };
+"territory.md": {
+	id: "territory.md";
+  slug: "territory";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] };
+"vlnc.md": {
+	id: "vlnc.md";
+  slug: "vlnc";
   body: string;
   collection: "projects";
   data: InferEntrySchema<"projects">
