@@ -20,13 +20,13 @@ const { title } = Astro.props;
       <div class="row mx-auto px-4 sm:max-w-screen-xl sm:px-8">
         <div class="relative grid grid-cols-1 sm:gap-8 sm:grid-cols-12">
           <div class="column sm:col-span-3">
-            <BaseNav />
+            <BaseNav transition:persist/>
           </div>
           <slot />
         </div>
       </div>
     </main>
-    <BaseFooter />
+    <BaseFooter transition:persist/>
   </body>
   <Scripts />
 </html>

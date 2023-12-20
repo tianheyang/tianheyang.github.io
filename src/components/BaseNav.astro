@@ -1,14 +1,18 @@
 ---
-
+const isHome = Astro.url.pathname === '/';
 ---
 
 <div class="sm:sticky sm:top-[40px]" id="nav">
-	<a href={Astro.url.pathname === '/' ? "/#web" : '/' } id="top-button" title="Back to Homepage"></a>
-	<ul>
-		<li><a href="/#web">1 / Web<span class="details">design and development</span></a></li>
-		<li><a href="/#print">2 / Print<span class="details">desktop publishing</span></a></li>
-		<li><a href="https://www.instagram.com/city_soul_analog/" target="_blank" rel=”noreferrer”>3 / Photo<span class="details">@city_soul_analog</span></a></li>
-		<li><a href="#" id="back-to-top" onclick="document.body.scrollTop=0;document.documentElement.scrollTop=0;event.preventDefault()" transition:persist>Back to Top</a></li>
-	</ul>
+	<a href={isHome ? "/#web" : '/' } id={isHome ? "top-button" :"top-button-back"} class={isHome ? "" : "group"} title="Back to homepage">
+		{!isHome && (<h2 class="pl-12 py-0 leading-[30px] group-hover:underline group-hover:text-black text-black normal-case">Home</h2>)}
+	</a>
+	{isHome && (
+		<ul>
+			<li><a href="/#web">1 / Web<span class="details">design and development</span></a></li>
+			<li><a href="/#print">2 / Print<span class="details">desktop publishing</span></a></li>
+			<li><a href="https://www.instagram.com/city_soul_analog/" target="_blank" rel=”noreferrer”>3 / Photo<span class="details">@city_soul_analog</span></a></li>
+			<li><a href="#" id="back-to-top" onclick="document.body.scrollTop=0;document.documentElement.scrollTop=0;event.preventDefault()" transition:persist>Back to Top</a></li>
+		</ul>
+	)}
 </div>
 

@@ -52,23 +52,13 @@
         .replace(/(index|default).[a-zA-Z]{3,4}$/, "")
         .replace(/\/$/, "");
     }
-    function activateAnchor(target, cb, fromTop) {
+    function activateAnchor(target) {
       var $currentActiveSection = $(".section.active");
       var $currentActiveNav = $("#nav .active");
       var $link = $(`.homepage #nav ul a[href="${target}"]`);
       var $target = $(target);
       var $sidebarSection = $(".sidebar ." + target.substring(1));
-      if (target == "#photo") {
-        $body.animate(
-          {
-            scrollTop: 0,
-          },
-          300,
-          "easeInOutQuint"
-        );
-      } else if (fromTop != undefined) {
-        $body.scrollTop(fromTop);
-      }
+
       $currentActiveSection.fadeOut(300, function () {
         $currentActiveSection.removeClass("active");
         $currentActiveNav.removeClass("active");
@@ -76,9 +66,15 @@
         $target.fadeIn(300, function () {
           $target.addClass("active");
           $link.addClass("active");
-          if (cb) {
-            setTimeout(cb, 310);
-          }
+          $body.animate(
+            {
+              scrollTop: $(target).offset().top,
+            },
+            {
+              duration: 50,
+              easing: 'easeInOutQuint'
+            }
+          );
         });
         if ($sidebarSection.length) {
           $sidebarSection.fadeIn(300, function () {
@@ -86,17 +82,6 @@
           });
         }
       });
-    }
-    function smoothScroll(target) {
-      if (target != "#photo") {
-        $body.animate(
-          {
-            scrollTop: $(target).offset().top - 19,
-          },
-          300,
-          "easeInOutQuint"
-        );
-      }
     }
     // Scroll override
     $body.bind(
@@ -125,8 +110,8 @@
           var target = this.hash;
           $(this).click(function(event) {
             event.preventDefault();
-            var $fromTop = $body.scrollTop();
-            activateAnchor(target, function(){smoothScroll(target)}, $fromTop);
+            window.history.pushState('','',"/#" + routeName);
+            activateAnchor(target);
           });
         }
       });
