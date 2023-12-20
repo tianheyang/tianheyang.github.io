@@ -307,7 +307,7 @@ i {
     position: absolute;
     top: 1px;
     left: -2px;
-    background: transparent url("/images/logo-nav-back.png") left top no-repeat;
+    background: transparent url("/images/logo-nav-back.png") left top / contain no-repeat;
     text-decoration: none;
   }
 }
@@ -618,7 +618,6 @@ code {
     }
     #top-button-back {
       background-image: url("/images/logo-nav-back@2x.png");
-      background-size: 100%;
     }
   }
 }
