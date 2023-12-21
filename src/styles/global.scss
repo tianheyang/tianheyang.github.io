@@ -707,7 +707,7 @@ code {
   }
 }
 
-@media handheld, only screen and (max-width: 667px) {
+@media handheld, only screen and (max-width: 640px) {
   #banner {
     height: 320px;
     &#banner-bg {
@@ -763,6 +763,9 @@ code {
     .empty-thumb {
       height: 90px;
     }
+  }
+  .project-summary-margins {
+    margin-top: calc(1em - 24px);
   }
   #photostream {
     height: 300px;
