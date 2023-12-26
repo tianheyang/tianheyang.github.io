@@ -22,6 +22,6 @@ tertiaryImage:
     alt: 'Demo'
 ---
 ## Summary
-[Shutterdial](https://www.shutterdial.com/) was tool I created to help visualize the impact of camera settings on images, allowing users to query for images based on factors such as aperture, shutter speed, and focal length.
+[Shutterdial](https://www.shutterdial.com/) is a tool I created to help visualize the impact of camera settings on images, allowing users to query for images based on factors such as aperture, shutter speed, and focal length.
 
 Shutterdial was featured on [DPReview](https://www.dpreview.com/articles/8715183418/shutterdial-offers-flickr-searches-based-on-exif-data), [PetaPixel](https://petapixel.com/2015/05/13/shutterdial-lets-you-search-through-flickr-photos-by-camera-settings/), and a number of other photography-related publications worldwide.
