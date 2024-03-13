@@ -31,11 +31,6 @@
     var $window = $(window);
     var $body = $("body,html");
     var $banner = $("#banner");
-    // Remove spam farmer protection on email click
-    $('a.email-link').on('click', function(){
-      var href = $(this).attr('href') || '';
-      $(this).attr('href', href.replace('nospam.', ''));
-    });
     // .toggle() replacement for jQuery 1.9+, by jakecigar of jQuery forums
     $.fn.toggleClick = function () {
       var functions = arguments,
@@ -120,6 +115,11 @@
     function resetAnchors() {
       $("a[href*='#']").each(function() {
         $(this).unbind();
+      });
+      // Remove spam farmer protection on email click
+      $('a.email-link').on('click', function(){
+        var href = $(this).attr('href') || '';
+        $(this).attr('href', href.replace('nospam.', ''));
       });
     }
     // jQuery Lightbox
